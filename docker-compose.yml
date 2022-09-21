@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  _base:
+    &base
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./:/code
+      - ~/.gitconfig:/root/.gitconfig
+
+  dev:
+    <<: *base
+    command: bash
+    ports:
+      - 4200:4200
+
